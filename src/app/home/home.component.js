@@ -12,15 +12,15 @@ class HomeController {
         userId: 'asc'
       }
     }, {
-      getData: (params) => {
-        // ajax request to api
-        return this.homeService.getUsers().then(response => {
-          const data = $filter('orderBy')(response, params.orderBy())
-          params.total(response.length);
-          return data;
-        })
-      }
-    });
+        getData: (params) => {
+          // ajax request to api
+          return this.homeService.getUsers().then(response => {
+            const data = $filter('orderBy')(response, params.orderBy())
+            params.total(response.length);
+            return data;
+          })
+        }
+      });
   }
 }
 

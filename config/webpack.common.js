@@ -15,10 +15,10 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const helpers = require('./helpers');
 
 const METADATA = {
-  title: 'AppOrbit',
+  title: 'TEST',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
-  moduleName: process.env.APP_NAME || 'appOrbit'
+  moduleName: process.env.APP_NAME || 'myAPP'
 };
 
 if (METADATA.isDevServer) {
