@@ -4,22 +4,27 @@ require('./home.component.css');
 
 class HomeController {
 
-  constructor(homeService, NgTableParams) {
+  constructor(homeService, NgTableParams, $filter) {
     this.homeService = homeService;
 
-    this.userTableParams = new NgTableParams({}, {
+    this.userTableParams = new NgTableParams({
+      sorting: {
+        userId: 'asc'
+      }
+    }, {
       getData: (params) => {
         // ajax request to api
         return this.homeService.getUsers().then(response => {
+          const data = $filter('orderBy')(response, params.orderBy())
           params.total(response.length);
-          return response;
+          return data;
         })
       }
     });
   }
 }
 
-HomeController.$inject = ['homeService', 'NgTableParams'];
+HomeController.$inject = ['homeService', 'NgTableParams', '$filter'];
 
 export const HomeComponent = {
   controller: HomeController,
