@@ -1,0 +1,37 @@
+<div class="panel panel-default tier-content-wrapper" ui-on-drop="$ctrl.onDropOverContainer($event, $data)"
+  drop-channel="image, volume, port">
+  <div class="tier-body">
+    <div class="row">
+      <div class="col-md-7 clearfix no-right-padding" ng-click="$ctrl.isVolumeActive = false;">
+        <div class="img-container bounce-in-animation animated" ng-src="$ctrl.container.image">Container Image {{$parent.$index + 1}}</div>
+      </div>
+      <div class="col-md-5 no-padding">
+        <div class="volume-icon-selected-area"
+        ng-class="{'active': $ctrl.isVolumeActive}"></div>
+        <div class="volume-icon-selected-area-secondary"
+        ng-class="{'active': $ctrl.isVolumeActive}" ng-if="$ctrl.totalVolumeSize > $ctrl.maxColsPerRow"></div>
+        <div class="volume-icon-drop-area"
+         ng-if="$ctrl.totalVolumeSize <= $ctrl.maxColsPerRow"></div>
+        <div class="volume-icon-drop-area-secondary"
+        ng-if="$ctrl.totalVolumeSize > $ctrl.maxColsPerRow"></div>
+        <div class="volume clearfix" ng-class="$index == 1 ? 'volPosLeft':''" ng-repeat="rows in $ctrl.groupedVolumes track by $index">
+          <div class="volume-wrapper">
+            <volume data="volume" ng-click="$ctrl.isVolumeActive = true;$ctrl.showVolumeDetails($event, volume);" ng-repeat="volume in rows track by volume.id"
+              class="bounce-down-animation animated"></volume>
+          </div>
+          <div class="vol-icon-shadow"></div>
+        </div>
+        <div class="volume-count" ng-if="$ctrl.totalVolumeSize">{{$ctrl.totalVolumeSize}}</div>
+        <div class="vol-icon-shadow" ng-if="$ctrl.groupedVolumes.length == 0"></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 clearfix">
+        <port type="{{port.type}}" data="port" ng-repeat="port in $ctrl.container.ports"
+          ng-click="$ctrl.showPortDetails($event)">
+        </port>
+      </div>
+    </div>
+  </div>
+</div>
