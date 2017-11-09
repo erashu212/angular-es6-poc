@@ -12,7 +12,7 @@ describe('Home flow', function () {
 
         browser.sleep(6000).then(function () {
             homeUrl = browser.getCurrentUrl();
-            expect('1').to.equal('1');
+            expect(homeUrl).to.equal('/');
         })
     });
 });

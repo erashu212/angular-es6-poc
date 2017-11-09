@@ -12,7 +12,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
     "test": "karma start ./karma.config.js",
-    "e2e": "protractor ./protractor.config.js",
+    "e2e:update": "webdriver-manager update",
+    "e2e": "npm run e2e:update && protractor protractor.config.js",
     "build": "rimraf build && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "license": "ISC",
