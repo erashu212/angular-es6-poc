@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@angular/router": "0.2.0",
-    "angular": "^1.5.8",
+    "angular": "^1.8.3",
     "angular-animate": "^1.5.8",
     "angular-local-storage": "^0.2.2",
     "angular-mocks": "^1.5.8",
